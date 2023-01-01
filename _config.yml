@@ -1,0 +1,69 @@
+title: Almost Intelligence
+remote_theme: just-the-docs/just-the-docs
+
+ga_tracking: "G-E4100S85KR"
+
+url: https://www.almost-intelligence.com
+
+nav_external_links:
+  - title: Personal Website
+    url: https://yongchanghao.github.io
+
+aux_links:
+  "About":
+    - "/about"
+  "Instagram":
+    - "https://www.instagram.com/yongchanghao"
+  "WeChat":
+    - "/wechat"
+
+plugins:
+ - jekyll-remote-theme
+ - jekyll-seo-tag
+ - rake
+
+defaults:
+  - scope:
+      path: "collections/*"
+    values:
+      layout: post
+  - scope:
+      path: "collections/_almost-intelligence/*"
+    values:
+      nav_exclude: true
+      permalink: "/:title"
+
+assets: "https://github.com/yongchanghao/ghpage-lfs/raw/main"
+
+collections_dir: collections
+
+collections:
+  the-related-work:
+    output: true
+  almost-intelligence:
+    output: true
+  trajectories:
+    output: true
+
+
+just_the_docs:
+  collections:
+    almost-intelligence:
+      name: Almost Intelligence
+      nav_fold: true
+    the-related-work:
+      name: The Related Work
+      nav_fold: true
+    trajectories:
+      name: Trajectories
+      nav_fold: true
+
+
+# compress_html:
+#   ignore:
+#     envs: all
+
+# kramdown:
+#   syntax_highlighter_opts:
+#     block:
+#       line_numbers: true

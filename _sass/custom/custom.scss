@@ -1,0 +1,45 @@
+
+body {
+  font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+}
+
+a {
+  color: #2576af !important;
+}
+
+svg {
+    color: #2576af !important;
+}
+
+.site-title {
+    @media (min-width: 31.25rem) {font-size: 20px !important;}
+}
+
+img {
+    display: block;
+    object-fit: contain;
+
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    padding-right: 0rem;
+
+    min-width: 100%;
+    max-width: 100%;
+
+    margin-left: auto;
+    margin-right: auto;
+  
+    @media (min-width: 31.25rem) {      
+        padding-right: 1rem;
+        min-width: 50%;
+        max-width: 70%;
+    }
+}
+
+.preview {
+    max-height: 24rem;
+}
+
+::selection {
+  background: #2576af !important;
+}

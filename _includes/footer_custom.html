@@ -1,0 +1,17 @@
+{%- if page.layout == "post" -%}
+<div class="d-flex mt-2">
+    <p class="text-small text-grey-dk-000 mb-0 mr-2">
+        Page created: <span class="d-inline-block">{{ page.created | date: "%Y-%m-%d" }}</span>
+        {%- if page.modified-%}
+        , modified: <span class="d-inline-block">{{ page.modified | date: "%Y-%m-%d" }}</span>
+        {%- endif -%}.
+    </p>
+</div>
+<script src="https://utteranc.es/client.js"
+        repo="yongchanghao/almost-intelligence"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+{%- endif -%}

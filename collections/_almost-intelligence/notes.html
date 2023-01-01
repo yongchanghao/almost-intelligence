@@ -1,0 +1,77 @@
+---
+layout: default
+title: Notes
+nav_order: 1
+nav_exclude: false
+permalink: /
+---
+
+
+
+<h3>Latest Updates of All Collections</h3>
+
+{%- assign sorted_pages =  site.pages -%}
+
+{%- for cl in site.collections -%}
+  {%- assign sorted_pages = sorted_pages | concat: cl.docs -%}
+{%- endfor -%}
+
+{%- assign sorted_pages = sorted_pages
+  | where_exp: "item", "item.title != null" 
+  | where_exp: "item", "item.layout == 'post'"
+  | where_exp: "item", "item.has_children != true" 
+  | where_exp: "item", "item.modified != nil" -%}
+
+{%- assign recent_pages = "" | split: "" -%}
+
+{%- assign recent_pages = sorted_pages | sort: "modified" -%}
+
+{%- assign recent_pages = recent_pages | reverse -%}
+
+{%- assign recent_pages = recent_pages | slice: 0, 5 -%}
+
+{%- for page in recent_pages -%}
+
+<div class="fs-2">
+  <span class="text-grey-dk-100 pr-1"> 
+    {{ page.modified | default: page.created | date: "%Y-%m-%d" }}
+  </span>
+  <a class="pr-2" href="{{ page.url | relative_url }}">{{ page.path }}</a>
+  <span class="text-grey-dk-100"> 
+    {%- if page.modified != page.created -%}modified{%- else -%}created{%- endif -%}
+  </span>
+</div>
+
+{%- endfor -%}
+
+
+<h3 class="mt-6"> All Notes </h3>
+
+{%- assign title_pages =  site.pages -%}
+
+{%- for cl in site.collections -%}
+  {%- assign title_pages = title_pages | concat: cl.docs -%}
+{%- endfor -%}
+
+{%- assign title_pages = title_pages
+  | where_exp: "item", "item.title != nil"
+  | where_exp: "item", "item.has_children != true"
+  | where_exp: "item", "item.layout == 'post'"
+  | where_exp: "item", "item.nav_exclude == true"
+  | sort: "created" -%}
+
+  {%- for page in title_pages -%}
+  <div style="border-top: 1px gray solid;" class="pt-2 mt-4">
+    <a href="{{ page.url | relative_url }}">{{ page.title }}</a>
+    <span class="fs-2 text-grey-dk-000 pl-4">{%- if page.modified != page.created -%}Modified{%- else -%}Created{%- endif -%}: {{ page.modified | date: "%Y-%m-%d" }}</span>
+    <div>
+      <q class="fs-3 text-grey-dk-100">{{ page.content | markdownify | strip_html | truncatewords: 50 }}</q>
+    </div>
+    {%- if page.image -%}
+    <div>
+      <img loading="lazy" class="preview" src="{{ site.assets }}/{{ page.image }}"></img>
+    </div>
+    {%- endif -%}
+  </div>
+  {%- endfor -%}
+
