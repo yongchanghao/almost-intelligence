@@ -6,8 +6,6 @@ nav_exclude: false
 permalink: /
 ---
 
-
-
 <h3>Latest Updates of All Collections</h3>
 
 {%- assign sorted_pages =  site.pages -%}
@@ -58,7 +56,8 @@ permalink: /
   | where_exp: "item", "item.has_children != true"
   | where_exp: "item", "item.layout == 'post'"
   | where_exp: "item", "item.nav_exclude == true"
-  | sort: "created" -%}
+  | sort: "created"
+  | reverse -%}
 
   {%- for page in title_pages -%}
   <div style="border-top: 1px gray solid;" class="pt-2 mt-4">
