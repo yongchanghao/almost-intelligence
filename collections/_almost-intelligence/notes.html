@@ -18,6 +18,7 @@ permalink: /
   | where_exp: "item", "item.title != null" 
   | where_exp: "item", "item.layout == 'post'"
   | where_exp: "item", "item.has_children != true" 
+  | where_exp: "item", "item.hidden != true"
   | where_exp: "item", "item.modified != nil" -%}
 
 {%- assign recent_pages = "" | split: "" -%}
@@ -56,6 +57,7 @@ permalink: /
   | where_exp: "item", "item.has_children != true"
   | where_exp: "item", "item.layout == 'post'"
   | where_exp: "item", "item.nav_exclude == true"
+  | where_exp: "item", "item.hidden != true"
   | sort: "created"
   | reverse -%}
 
