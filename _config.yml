@@ -59,7 +59,13 @@ just_the_docs:
       name: Trajectories
       nav_fold: true
 
-
+callouts:
+  example:
+    title: Example
+    color: green
+  quote:
+    color: blue
+    
 # compress_html:
 #   ignore:
 #     envs: all
